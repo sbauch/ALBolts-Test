@@ -1,15 +1,6 @@
 class AppDelegate
   def application(application, didFinishLaunchingWithOptions:launchOptions)
 
-    # Mixpanel.sharedInstanceWithToken('bd1ba2f3d1ee14a6f0fdc0ee64a1b85f')
-    #
-    # NSNotificationCenter.defaultCenter.addObserverForName(BFMeasurementEventNotificationName, object:nil, queue:nil, usingBlock: proc {|note|
-    #   event = note.userInfo;
-    #   eventData = event[BFMeasurementEventArgsKey]
-    #   mp = Mixpanel.sharedInstance
-    #   mp.track(event['event_name'], properties: eventData)
-    # })
-
     @window = UIWindow.alloc.initWithFrame(UIScreen.mainScreen.bounds)
     @window.makeKeyAndVisible
     @main = MainController.alloc.init

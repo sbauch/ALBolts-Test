@@ -13,7 +13,6 @@ Motion::Project::App.setup do |app|
   app.fonts = ['Questrial-Regular.ttf']
 
   app.pods do
-    pod 'Mixpanel'
     pod 'Bolts'
   end
 
