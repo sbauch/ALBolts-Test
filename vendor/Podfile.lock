@@ -1,0 +1,13 @@
+PODS:
+  - Bolts (1.1.2)
+  - Mixpanel (2.4.2)
+
+DEPENDENCIES:
+  - Bolts
+  - Mixpanel
+
+SPEC CHECKSUMS:
+  Bolts: 2635e8698a630774689441047f3465d78c48d485
+  Mixpanel: cd01a5952773eaff12880da334a9776180c5f0a7
+
+COCOAPODS: 0.33.1

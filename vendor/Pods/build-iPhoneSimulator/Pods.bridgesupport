@@ -1,0 +1,1053 @@
+<?xml version='1.0'?>
+<signatures version='1.0'>
+<constant const='true' declared_type='NSString*' name='BFAppLinkNavigateBackToReferrerEventName' type='@'/>
+<constant const='true' declared_type='NSString*' name='BFAppLinkNavigateInEventName' type='@'/>
+<constant const='true' declared_type='NSString*' name='BFAppLinkNavigateOutEventName' type='@'/>
+<constant const='true' declared_type='NSString*' name='BFAppLinkParseEventName' type='@'/>
+<constant const='true' declared_type='NSString*' name='BFAppLinkVersion' type='@'/>
+<constant const='true' declared_type='NSString*' name='BFMeasurementEventArgsKey' type='@'/>
+<constant const='true' declared_type='NSString*' name='BFMeasurementEventNameKey' type='@'/>
+<constant const='true' declared_type='NSString*' name='BFMeasurementEventNotificationName' type='@'/>
+<constant const='true' declared_type='NSString*' name='MPNotificationTypeMini' type='@'/>
+<constant const='true' declared_type='NSString*' name='MPNotificationTypeTakeover' type='@'/>
+<constant const='true' declared_type='NSInteger' name='kBFMultipleErrorsError' type='i' type64='q'/>
+<string_constant name='BOLTS_VERSION' nsstring='true' value='1.1.2'/>
+<enum name='BFAppLinkNavigationTypeApp' value='2'/>
+<enum name='BFAppLinkNavigationTypeBrowser' value='1'/>
+<enum name='BFAppLinkNavigationTypeFailure' value='0'/>
+<enum name='BFIncludeStatusBarInSizeAlways' value='2'/>
+<enum name='BFIncludeStatusBarInSizeIOS7AndLater' value='1'/>
+<enum name='BFIncludeStatusBarInSizeNever' value='0'/>
+<enum name='COCOAPODS_VERSION_MAJOR_Bolts' value='1'/>
+<enum name='COCOAPODS_VERSION_MAJOR_Mixpanel' value='2'/>
+<enum name='COCOAPODS_VERSION_MINOR_Bolts' value='1'/>
+<enum name='COCOAPODS_VERSION_MINOR_Mixpanel' value='4'/>
+<enum name='COCOAPODS_VERSION_PATCH_Bolts' value='2'/>
+<enum name='COCOAPODS_VERSION_PATCH_Mixpanel' value='2'/>
+<function name='MP_NewBase64Decode'>
+<arg const='true' declared_type='char*' name='inputBuffer' type='*'/>
+<arg declared_type='size_t' name='length' type='L' type64='Q'/>
+<arg declared_type='size_t*' name='outputLength' type='^I' type64='^Q'/>
+<retval declared_type='void*' type='^v'/>
+</function>
+<function name='MP_NewBase64Encode'>
+<arg const='true' declared_type='void*' name='inputBuffer' type='^v'/>
+<arg declared_type='size_t' name='length' type='L' type64='Q'/>
+<arg declared_type='_Bool' name='separateLines' type='B'/>
+<arg declared_type='size_t*' name='outputLength' type='^I' type64='^Q'/>
+<retval declared_type='char*' type='*'/>
+</function>
+<class name='BFAppLink'>
+<method class_method='true' selector='appLinkWithSourceURL:targets:webURL:'>
+<arg declared_type='NSURL*' index='0' name='sourceURL' type='@'/>
+<arg declared_type='NSArray*' index='1' name='targets' type='@'/>
+<arg declared_type='NSURL*' index='2' name='webURL' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method class_method='true' selector='appLinkWithSourceURL:targets:webURL:isBackToReferrer:'>
+<arg declared_type='NSURL*' index='0' name='sourceURL' type='@'/>
+<arg declared_type='NSArray*' index='1' name='targets' type='@'/>
+<arg declared_type='NSURL*' index='2' name='webURL' type='@'/>
+<arg declared_type='BOOL' index='3' name='isBackToReferrer' type='B'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='isBackToReferrer'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='setSourceURL:'>
+<arg declared_type='NSURL*' index='0' name='sourceURL' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setWebURL:'>
+<arg declared_type='NSURL*' index='0' name='webURL' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='sourceURL'>
+<retval declared_type='NSURL*' type='@'/>
+</method>
+<method selector='targets'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method selector='webURL'>
+<retval declared_type='NSURL*' type='@'/>
+</method>
+</class>
+<class name='BFAppLinkNavigation'>
+<method selector='appLink'>
+<retval declared_type='BFAppLink*' type='@'/>
+</method>
+<method selector='appLinkData'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+<method class_method='true' selector='defaultResolver'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='extras'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+<method selector='navigate:'>
+<arg declared_type='NSError**' index='0' name='error' type='^@'/>
+<retval declared_type='BFAppLinkNavigationType' type='i' type64='q'/>
+</method>
+<method class_method='true' selector='navigateToAppLink:error:'>
+<arg declared_type='BFAppLink*' index='0' name='link' type='@'/>
+<arg declared_type='NSError**' index='1' name='error' type='^@'/>
+<retval declared_type='BFAppLinkNavigationType' type='i' type64='q'/>
+</method>
+<method class_method='true' selector='navigateToURLInBackground:'>
+<arg declared_type='NSURL*' index='0' name='destination' type='@'/>
+<retval declared_type='BFTask*' type='@'/>
+</method>
+<method class_method='true' selector='navigateToURLInBackground:resolver:'>
+<arg declared_type='NSURL*' index='0' name='destination' type='@'/>
+<arg declared_type='id' index='1' name='resolver' type='@'/>
+<retval declared_type='BFTask*' type='@'/>
+</method>
+<method class_method='true' selector='navigationWithAppLink:extras:appLinkData:'>
+<arg declared_type='BFAppLink*' index='0' name='appLink' type='@'/>
+<arg declared_type='NSDictionary*' index='1' name='extras' type='@'/>
+<arg declared_type='NSDictionary*' index='2' name='appLinkData' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method class_method='true' selector='resolveAppLinkInBackground:'>
+<arg declared_type='NSURL*' index='0' name='destination' type='@'/>
+<retval declared_type='BFTask*' type='@'/>
+</method>
+<method class_method='true' selector='resolveAppLinkInBackground:resolver:'>
+<arg declared_type='NSURL*' index='0' name='destination' type='@'/>
+<arg declared_type='id' index='1' name='resolver' type='@'/>
+<retval declared_type='BFTask*' type='@'/>
+</method>
+<method selector='setAppLink:'>
+<arg declared_type='BFAppLink*' index='0' name='appLink' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method class_method='true' selector='setDefaultResolver:'>
+<arg declared_type='id' index='0' name='resolver' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='BFAppLinkReturnToRefererController'>
+<method selector='closeViewAnimated:'>
+<arg declared_type='BOOL' index='0' name='animated' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='delegate'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='init'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initForDisplayAboveNavController:'>
+<arg declared_type='UINavigationController*' index='0' name='navController' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='removeFromNavController'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setDelegate:'>
+<arg declared_type='id' index='0' name='delegate' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setView:'>
+<arg declared_type='BFAppLinkReturnToRefererView*' index='0' name='view' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='showViewForRefererAppLink:'>
+<arg declared_type='BFAppLink*' index='0' name='refererAppLink' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='showViewForRefererURL:'>
+<arg declared_type='NSURL*' index='0' name='url' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='view'>
+<retval declared_type='BFAppLinkReturnToRefererView*' type='@'/>
+</method>
+</class>
+<class name='BFAppLinkReturnToRefererView'>
+<method selector='closed'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='delegate'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='includeStatusBarInSize'>
+<retval declared_type='BFIncludeStatusBarInSize' type='i'/>
+</method>
+<method selector='refererAppLink'>
+<retval declared_type='BFAppLink*' type='@'/>
+</method>
+<method selector='setClosed:'>
+<arg declared_type='BOOL' index='0' name='closed' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setDelegate:'>
+<arg declared_type='id' index='0' name='delegate' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setIncludeStatusBarInSize:'>
+<arg declared_type='BFIncludeStatusBarInSize' index='0' name='includeStatusBarInSize' type='i'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setRefererAppLink:'>
+<arg declared_type='BFAppLink*' index='0' name='refererAppLink' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setTextColor:'>
+<arg declared_type='UIColor*' index='0' name='textColor' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='statusBarHeight'>
+<retval declared_type='CGFloat' type='f' type64='d'/>
+</method>
+<method selector='textColor'>
+<retval declared_type='UIColor*' type='@'/>
+</method>
+</class>
+<class name='BFAppLinkTarget'>
+<method selector='URL'>
+<retval declared_type='NSURL*' type='@'/>
+</method>
+<method class_method='true' selector='appLinkTargetWithURL:appStoreId:appName:'>
+<arg declared_type='NSURL*' index='0' name='url' type='@'/>
+<arg declared_type='NSString*' index='1' name='appStoreId' type='@'/>
+<arg declared_type='NSString*' index='2' name='appName' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='appName'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='appStoreId'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='setURL:'>
+<arg declared_type='NSURL*' index='0' name='URL' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='BFExecutor'>
+<method class_method='true' selector='defaultExecutor'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='execute:'>
+<arg declared_type='void (^)()' function_pointer='true' index='0' name='block' type='@?'>
+<retval declared_type='void' type='v'/>
+</arg>
+<retval declared_type='void' type='v'/>
+</method>
+<method class_method='true' selector='executorWithBlock:'>
+<arg declared_type='void (^)(void (^)())' function_pointer='true' index='0' name='block' type='@?'>
+<arg declared_type='void (^)()' function_pointer='true' type='@?'>
+<retval declared_type='void' type='v'/>
+</arg>
+<retval declared_type='void' type='v'/>
+</arg>
+<retval declared_type='id' type='@'/>
+</method>
+<method class_method='true' selector='executorWithDispatchQueue:'>
+<arg declared_type='dispatch_queue_t' index='0' name='queue' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method class_method='true' selector='executorWithOperationQueue:'>
+<arg declared_type='NSOperationQueue*' index='0' name='queue' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method class_method='true' selector='immediateExecutor'>
+<retval declared_type='id' type='@'/>
+</method>
+<method class_method='true' selector='mainThreadExecutor'>
+<retval declared_type='id' type='@'/>
+</method>
+</class>
+<class name='BFMeasurementEvent'>
+<method class_method='true' selector='postNotificationForEventName:args:'>
+<arg declared_type='NSString*' index='0' name='name' type='@'/>
+<arg declared_type='NSDictionary*' index='1' name='args' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='BFTask'>
+<method class_method='true' selector='cancelledTask'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='continueWithBlock:'>
+<arg declared_type='BFContinuationBlock' function_pointer='true' index='0' name='block' type='@?'>
+<arg declared_type='BFTask*' type='@'/>
+<retval declared_type='id' type='@'/>
+</arg>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='continueWithExecutor:withBlock:'>
+<arg declared_type='BFExecutor*' index='0' name='executor' type='@'/>
+<arg declared_type='BFContinuationBlock' function_pointer='true' index='1' name='block' type='@?'>
+<arg declared_type='BFTask*' type='@'/>
+<retval declared_type='id' type='@'/>
+</arg>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='continueWithExecutor:withSuccessBlock:'>
+<arg declared_type='BFExecutor*' index='0' name='executor' type='@'/>
+<arg declared_type='BFContinuationBlock' function_pointer='true' index='1' name='block' type='@?'>
+<arg declared_type='BFTask*' type='@'/>
+<retval declared_type='id' type='@'/>
+</arg>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='continueWithSuccessBlock:'>
+<arg declared_type='BFContinuationBlock' function_pointer='true' index='0' name='block' type='@?'>
+<arg declared_type='BFTask*' type='@'/>
+<retval declared_type='id' type='@'/>
+</arg>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='error'>
+<retval declared_type='NSError*' type='@'/>
+</method>
+<method selector='exception'>
+<retval declared_type='NSException*' type='@'/>
+</method>
+<method selector='isCancelled'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='isCompleted'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='result'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='setError:'>
+<arg declared_type='NSError*' index='0' name='error' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setException:'>
+<arg declared_type='NSException*' index='0' name='exception' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setResult:'>
+<arg declared_type='id' index='0' name='result' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method class_method='true' selector='taskForCompletionOfAllTasks:'>
+<arg declared_type='NSArray*' index='0' name='tasks' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method class_method='true' selector='taskFromExecutor:withBlock:'>
+<arg declared_type='BFExecutor*' index='0' name='executor' type='@'/>
+<arg declared_type='id (^)()' function_pointer='true' index='1' name='block' type='@?'>
+<retval declared_type='id' type='@'/>
+</arg>
+<retval declared_type='id' type='@'/>
+</method>
+<method class_method='true' selector='taskWithDelay:'>
+<arg declared_type='int' index='0' name='millis' type='i'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method class_method='true' selector='taskWithError:'>
+<arg declared_type='NSError*' index='0' name='error' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method class_method='true' selector='taskWithException:'>
+<arg declared_type='NSException*' index='0' name='exception' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method class_method='true' selector='taskWithResult:'>
+<arg declared_type='id' index='0' name='result' type='@'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='waitUntilFinished'>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='BFTaskCompletionSource'>
+<method selector='cancel'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setError:'>
+<arg declared_type='NSError*' index='0' name='error' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setException:'>
+<arg declared_type='NSException*' index='0' name='exception' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setResult:'>
+<arg declared_type='id' index='0' name='result' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='task'>
+<retval declared_type='BFTask*' type='@'/>
+</method>
+<method class_method='true' selector='taskCompletionSource'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='trySetCancelled'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='trySetError:'>
+<arg declared_type='NSError*' index='0' name='error' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='trySetException:'>
+<arg declared_type='NSException*' index='0' name='exception' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='trySetResult:'>
+<arg declared_type='id' index='0' name='result' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+</class>
+<class name='BFURL'>
+<method class_method='true' selector='URLForRenderBackToReferrerBarURL:'>
+<arg declared_type='NSURL*' index='0' name='url' type='@'/>
+<retval declared_type='BFURL*' type='@'/>
+</method>
+<method class_method='true' selector='URLWithInboundURL:sourceApplication:'>
+<arg declared_type='NSURL*' index='0' name='url' type='@'/>
+<arg declared_type='NSString*' index='1' name='sourceApplication' type='@'/>
+<retval declared_type='BFURL*' type='@'/>
+</method>
+<method class_method='true' selector='URLWithURL:'>
+<arg declared_type='NSURL*' index='0' name='url' type='@'/>
+<retval declared_type='BFURL*' type='@'/>
+</method>
+<method selector='appLinkData'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+<method selector='appLinkExtras'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+<method selector='appLinkReferer'>
+<retval declared_type='BFAppLink*' type='@'/>
+</method>
+<method selector='inputQueryParameters'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+<method selector='inputURL'>
+<retval declared_type='NSURL*' type='@'/>
+</method>
+<method selector='setAppLinkData:'>
+<arg declared_type='NSDictionary*' index='0' name='appLinkData' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setAppLinkExtras:'>
+<arg declared_type='NSDictionary*' index='0' name='appLinkExtras' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setAppLinkReferer:'>
+<arg declared_type='BFAppLink*' index='0' name='appLinkReferer' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setInputQueryParameters:'>
+<arg declared_type='NSDictionary*' index='0' name='inputQueryParameters' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setInputURL:'>
+<arg declared_type='NSURL*' index='0' name='inputURL' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setTargetQueryParameters:'>
+<arg declared_type='NSDictionary*' index='0' name='targetQueryParameters' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setTargetURL:'>
+<arg declared_type='NSURL*' index='0' name='targetURL' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='targetQueryParameters'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+<method selector='targetURL'>
+<retval declared_type='NSURL*' type='@'/>
+</method>
+</class>
+<class name='BFWebViewAppLinkResolver'>
+<method class_method='true' selector='sharedInstance'>
+<retval declared_type='id' type='@'/>
+</method>
+</class>
+<class name='Bolts'>
+<method class_method='true' selector='version'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+</class>
+<class name='MPMiniNotificationViewController'>
+<method selector='showWithAnimation'>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='MPNotification'>
+<method selector='ID'>
+<retval declared_type='NSUInteger' type='I' type64='Q'/>
+</method>
+<method selector='body'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='callToAction'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='callToActionURL'>
+<retval declared_type='NSURL*' type='@'/>
+</method>
+<method selector='image'>
+<retval declared_type='NSData*' type='@'/>
+</method>
+<method selector='imageURL'>
+<retval declared_type='NSURL*' type='@'/>
+</method>
+<method selector='messageID'>
+<retval declared_type='NSUInteger' type='I' type64='Q'/>
+</method>
+<method class_method='true' selector='notificationWithJSONObject:'>
+<arg declared_type='NSDictionary*' index='0' name='object' type='@'/>
+<retval declared_type='MPNotification*' type='@'/>
+</method>
+<method selector='setBody:'>
+<arg declared_type='NSString*' index='0' name='body' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setCallToAction:'>
+<arg declared_type='NSString*' index='0' name='callToAction' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setCallToActionURL:'>
+<arg declared_type='NSURL*' index='0' name='callToActionURL' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setImage:'>
+<arg declared_type='NSData*' index='0' name='image' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setImageURL:'>
+<arg declared_type='NSURL*' index='0' name='imageURL' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setTitle:'>
+<arg declared_type='NSString*' index='0' name='title' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setType:'>
+<arg declared_type='NSString*' index='0' name='type' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='title'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='type'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+</class>
+<class name='MPNotificationViewController'>
+<method selector='delegate'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='hideWithAnimation:completion:'>
+<arg declared_type='BOOL' index='0' name='animated' type='B'/>
+<arg declared_type='void (^)(void)' function_pointer='true' index='1' name='completion' type='@?'>
+<retval declared_type='void' type='v'/>
+</arg>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='notification'>
+<retval declared_type='MPNotification*' type='@'/>
+</method>
+<method selector='setDelegate:'>
+<arg declared_type='id' index='0' name='delegate' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setNotification:'>
+<arg declared_type='MPNotification*' index='0' name='notification' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='MPSurvey'>
+<method selector='ID'>
+<retval declared_type='NSUInteger' type='I' type64='Q'/>
+</method>
+<method selector='collectionID'>
+<retval declared_type='NSUInteger' type='I' type64='Q'/>
+</method>
+<method selector='name'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='questions'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+<method class_method='true' selector='surveyWithJSONObject:'>
+<arg declared_type='NSDictionary*' index='0' name='object' type='@'/>
+<retval declared_type='MPSurvey*' type='@'/>
+</method>
+</class>
+<class name='MPSurveyMultipleChoiceQuestion'>
+<method selector='choices'>
+<retval declared_type='NSArray*' type='@'/>
+</method>
+</class>
+<class name='MPSurveyNavigationController'>
+<method selector='backgroundImage'>
+<retval declared_type='UIImage*' type='@'/>
+</method>
+<method selector='delegate'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='setBackgroundImage:'>
+<arg declared_type='UIImage*' index='0' name='backgroundImage' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setDelegate:'>
+<arg declared_type='id' index='0' name='delegate' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setSurvey:'>
+<arg declared_type='MPSurvey*' index='0' name='survey' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='survey'>
+<retval declared_type='MPSurvey*' type='@'/>
+</method>
+</class>
+<class name='MPSurveyQuestion'>
+<method selector='ID'>
+<retval declared_type='NSUInteger' type='I' type64='Q'/>
+</method>
+<method selector='prompt'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method class_method='true' selector='questionWithJSONObject:'>
+<arg declared_type='NSObject*' index='0' name='object' type='@'/>
+<retval declared_type='MPSurveyQuestion*' type='@'/>
+</method>
+<method selector='type'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+</class>
+<class name='MPSurveyQuestionViewController'>
+<method selector='delegate'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='highlightColor'>
+<retval declared_type='UIColor*' type='@'/>
+</method>
+<method selector='question'>
+<retval declared_type='MPSurveyQuestion*' type='@'/>
+</method>
+<method selector='setDelegate:'>
+<arg declared_type='id' index='0' name='delegate' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setHighlightColor:'>
+<arg declared_type='UIColor*' index='0' name='highlightColor' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setQuestion:'>
+<arg declared_type='MPSurveyQuestion*' index='0' name='question' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='MPTakeoverNotificationViewController'>
+<method selector='backgroundImage'>
+<retval declared_type='UIImage*' type='@'/>
+</method>
+<method selector='setBackgroundImage:'>
+<arg declared_type='UIImage*' index='0' name='backgroundImage' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='Mixpanel'>
+<method selector='archive'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='checkForNotificationsOnActive'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='checkForSurveysOnActive'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='clearSuperProperties'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='createAlias:forDistinctID:'>
+<arg declared_type='NSString*' index='0' name='alias' type='@'/>
+<arg declared_type='NSString*' index='1' name='distinctID' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='currentSuperProperties'>
+<retval declared_type='NSDictionary*' type='@'/>
+</method>
+<method selector='delegate'>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='distinctId'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='flush'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='flushInterval'>
+<retval declared_type='NSUInteger' type='I' type64='Q'/>
+</method>
+<method selector='flushOnBackground'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='identify:'>
+<arg declared_type='NSString*' index='0' name='distinctId' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='initWithToken:andFlushInterval:'>
+<arg declared_type='NSString*' index='0' name='apiToken' type='@'/>
+<arg declared_type='NSUInteger' index='1' name='flushInterval' type='I' type64='Q'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='initWithToken:launchOptions:andFlushInterval:'>
+<arg declared_type='NSString*' index='0' name='apiToken' type='@'/>
+<arg declared_type='NSDictionary*' index='1' name='launchOptions' type='@'/>
+<arg declared_type='NSUInteger' index='2' name='flushInterval' type='I' type64='Q'/>
+<retval declared_type='id' type='@'/>
+</method>
+<method selector='nameTag'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='people'>
+<retval declared_type='MixpanelPeople*' type='@'/>
+</method>
+<method selector='registerSuperProperties:'>
+<arg declared_type='NSDictionary*' index='0' name='properties' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='registerSuperPropertiesOnce:'>
+<arg declared_type='NSDictionary*' index='0' name='properties' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='registerSuperPropertiesOnce:defaultValue:'>
+<arg declared_type='NSDictionary*' index='0' name='properties' type='@'/>
+<arg declared_type='id' index='1' name='defaultValue' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='reset'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='serverURL'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method selector='setCheckForNotificationsOnActive:'>
+<arg declared_type='BOOL' index='0' name='checkForNotificationsOnActive' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setCheckForSurveysOnActive:'>
+<arg declared_type='BOOL' index='0' name='checkForSurveysOnActive' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setDelegate:'>
+<arg declared_type='id' index='0' name='delegate' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setDistinctId:'>
+<arg declared_type='NSString*' index='0' name='distinctId' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setFlushInterval:'>
+<arg declared_type='NSUInteger' index='0' name='flushInterval' type='I' type64='Q'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setFlushOnBackground:'>
+<arg declared_type='BOOL' index='0' name='flushOnBackground' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setNameTag:'>
+<arg declared_type='NSString*' index='0' name='nameTag' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setPeople:'>
+<arg declared_type='MixpanelPeople*' index='0' name='people' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setServerURL:'>
+<arg declared_type='NSString*' index='0' name='serverURL' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setShowNetworkActivityIndicator:'>
+<arg declared_type='BOOL' index='0' name='showNetworkActivityIndicator' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setShowNotificationOnActive:'>
+<arg declared_type='BOOL' index='0' name='showNotificationOnActive' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setShowSurveyOnActive:'>
+<arg declared_type='BOOL' index='0' name='showSurveyOnActive' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method class_method='true' selector='sharedInstance'>
+<retval declared_type='Mixpanel*' type='@'/>
+</method>
+<method class_method='true' selector='sharedInstanceWithToken:'>
+<arg declared_type='NSString*' index='0' name='apiToken' type='@'/>
+<retval declared_type='Mixpanel*' type='@'/>
+</method>
+<method class_method='true' selector='sharedInstanceWithToken:launchOptions:'>
+<arg declared_type='NSString*' index='0' name='apiToken' type='@'/>
+<arg declared_type='NSDictionary*' index='1' name='launchOptions' type='@'/>
+<retval declared_type='Mixpanel*' type='@'/>
+</method>
+<method selector='showNetworkActivityIndicator'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='showNotification'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='showNotificationOnActive'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='showNotificationWithID:'>
+<arg declared_type='NSUInteger' index='0' name='ID' type='I' type64='Q'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='showNotificationWithType:'>
+<arg declared_type='NSString*' index='0' name='type' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='showSurvey'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='showSurveyOnActive'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='showSurveyWithID:'>
+<arg declared_type='NSUInteger' index='0' name='ID' type='I' type64='Q'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='track:'>
+<arg declared_type='NSString*' index='0' name='event' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='track:properties:'>
+<arg declared_type='NSString*' index='0' name='event' type='@'/>
+<arg declared_type='NSDictionary*' index='1' name='properties' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='trackPushNotification:'>
+<arg declared_type='NSDictionary*' index='0' name='userInfo' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='unregisterSuperProperty:'>
+<arg declared_type='NSString*' index='0' name='propertyName' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='MixpanelPeople'>
+<method selector='addPushDeviceToken:'>
+<arg declared_type='NSData*' index='0' name='deviceToken' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='append:'>
+<arg declared_type='NSDictionary*' index='0' name='properties' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='clearCharges'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='deleteUser'>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='increment:'>
+<arg declared_type='NSDictionary*' index='0' name='properties' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='increment:by:'>
+<arg declared_type='NSString*' index='0' name='property' type='@'/>
+<arg declared_type='NSNumber*' index='1' name='amount' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='set:'>
+<arg declared_type='NSDictionary*' index='0' name='properties' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='set:to:'>
+<arg declared_type='NSString*' index='0' name='property' type='@'/>
+<arg declared_type='id' index='1' name='object' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setOnce:'>
+<arg declared_type='NSDictionary*' index='0' name='properties' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='trackCharge:'>
+<arg declared_type='NSNumber*' index='0' name='amount' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='trackCharge:withProperties:'>
+<arg declared_type='NSNumber*' index='0' name='amount' type='@'/>
+<arg declared_type='NSDictionary*' index='1' name='properties' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='union:'>
+<arg declared_type='NSDictionary*' index='0' name='properties' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='NSData'>
+<method selector='mp_base64EncodedString'>
+<retval declared_type='NSString*' type='@'/>
+</method>
+<method class_method='true' selector='mp_dataFromBase64String:'>
+<arg declared_type='NSString*' index='0' name='aString' type='@'/>
+<retval declared_type='NSData*' type='@'/>
+</method>
+</class>
+<class name='NSObject'>
+<method selector='appLinkFromURLInBackground:'>
+<arg declared_type='NSURL*' index='0' name='url' type='@'/>
+<retval declared_type='BFTask*' type='@'/>
+</method>
+<method selector='mixpanelWillFlush:'>
+<arg declared_type='Mixpanel*' index='0' name='mixpanel' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+<method selector='notificationController:wasDismissedWithStatus:'>
+<arg declared_type='MPNotificationViewController*' index='0' name='controller' type='@'/>
+<arg declared_type='BOOL' index='1' name='status' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='questionController:didReceiveAnswerProperties:'>
+<arg declared_type='MPSurveyQuestionViewController*' index='0' name='controller' type='@'/>
+<arg declared_type='NSDictionary*' index='1' name='properties' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='returnToRefererController:didNavigateToAppLink:type:'>
+<arg declared_type='BFAppLinkReturnToRefererController*' index='0' name='controller' type='@'/>
+<arg declared_type='BFAppLink*' index='1' name='url' type='@'/>
+<arg declared_type='BFAppLinkNavigationType' index='2' name='type' type='i' type64='q'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='returnToRefererController:willNavigateToAppLink:'>
+<arg declared_type='BFAppLinkReturnToRefererController*' index='0' name='controller' type='@'/>
+<arg declared_type='BFAppLink*' index='1' name='appLink' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='returnToRefererViewDidTapInsideCloseButton:'>
+<arg declared_type='BFAppLinkReturnToRefererView*' index='0' name='view' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='returnToRefererViewDidTapInsideLink:link:'>
+<arg declared_type='BFAppLinkReturnToRefererView*' index='0' name='view' type='@'/>
+<arg declared_type='BFAppLink*' index='1' name='link' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='surveyController:wasDismissedWithAnswers:'>
+<arg declared_type='MPSurveyNavigationController*' index='0' name='controller' type='@'/>
+<arg declared_type='NSArray*' index='1' name='answers' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</class>
+<class name='UIColor'>
+<method selector='colorWithSaturationComponent:'>
+<arg declared_type='CGFloat' index='0' name='saturation' type='f' type64='d'/>
+<retval declared_type='UIColor*' type='@'/>
+</method>
+<method class_method='true' selector='mp_applicationPrimaryColor'>
+<retval declared_type='UIColor*' type='@'/>
+</method>
+<method class_method='true' selector='mp_darkEffectColor'>
+<retval declared_type='UIColor*' type='@'/>
+</method>
+<method class_method='true' selector='mp_extraLightEffectColor'>
+<retval declared_type='UIColor*' type='@'/>
+</method>
+<method class_method='true' selector='mp_lightEffectColor'>
+<retval declared_type='UIColor*' type='@'/>
+</method>
+</class>
+<class name='UIImage'>
+<method selector='mp_applyBlurWithRadius:tintColor:saturationDeltaFactor:maskImage:'>
+<arg declared_type='CGFloat' index='0' name='blurRadius' type='f' type64='d'/>
+<arg declared_type='UIColor*' index='1' name='tintColor' type='@'/>
+<arg declared_type='CGFloat' index='2' name='saturationDeltaFactor' type='f' type64='d'/>
+<arg declared_type='UIImage*' index='3' name='maskImage' type='@'/>
+<retval declared_type='UIImage*' type='@'/>
+</method>
+<method selector='mp_applyDarkEffect'>
+<retval declared_type='UIImage*' type='@'/>
+</method>
+<method selector='mp_applyExtraLightEffect'>
+<retval declared_type='UIImage*' type='@'/>
+</method>
+<method selector='mp_applyLightEffect'>
+<retval declared_type='UIImage*' type='@'/>
+</method>
+<method selector='mp_applyTintEffectWithColor:'>
+<arg declared_type='UIColor*' index='0' name='tintColor' type='@'/>
+<retval declared_type='UIImage*' type='@'/>
+</method>
+<method selector='mp_averageColor'>
+<retval declared_type='UIColor*' type='@'/>
+</method>
+<method selector='mp_importantColor'>
+<retval declared_type='UIColor*' type='@'/>
+</method>
+</class>
+<class name='UIView'>
+<method selector='mp_snapshotForBlur'>
+<retval declared_type='UIImage*' type='@'/>
+</method>
+<method selector='mp_snapshotImage'>
+<retval declared_type='UIImage*' type='@'/>
+</method>
+</class>
+<informal_protocol name='BFAppLinkResolving'>
+<method selector='appLinkFromURLInBackground:' type='@12@0:4@8' type64='@24@0:8@16'>
+<arg declared_type='NSURL*' index='0' name='url' type='@'/>
+<retval declared_type='BFTask*' type='@'/>
+</method>
+</informal_protocol>
+<informal_protocol name='BFAppLinkReturnToRefererControllerDelegate'>
+<method selector='returnToRefererController:didNavigateToAppLink:type:' type='v20@0:4@8@12i16' type64='v40@0:8@16@24q32'>
+<arg declared_type='BFAppLinkReturnToRefererController*' index='0' name='controller' type='@'/>
+<arg declared_type='BFAppLink*' index='1' name='url' type='@'/>
+<arg declared_type='BFAppLinkNavigationType' index='2' name='type' type='i' type64='q'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='returnToRefererController:willNavigateToAppLink:' type='v16@0:4@8@12' type64='v32@0:8@16@24'>
+<arg declared_type='BFAppLinkReturnToRefererController*' index='0' name='controller' type='@'/>
+<arg declared_type='BFAppLink*' index='1' name='appLink' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</informal_protocol>
+<informal_protocol name='BFAppLinkReturnToRefererViewDelegate'>
+<method selector='returnToRefererViewDidTapInsideCloseButton:' type='v12@0:4@8' type64='v24@0:8@16'>
+<arg declared_type='BFAppLinkReturnToRefererView*' index='0' name='view' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='returnToRefererViewDidTapInsideLink:link:' type='v16@0:4@8@12' type64='v32@0:8@16@24'>
+<arg declared_type='BFAppLinkReturnToRefererView*' index='0' name='view' type='@'/>
+<arg declared_type='BFAppLink*' index='1' name='link' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</informal_protocol>
+<informal_protocol name='MPNotificationViewControllerDelegate'>
+<method selector='notificationController:wasDismissedWithStatus:' type='v16@0:4@8B12' type64='v28@0:8@16B24'>
+<arg declared_type='MPNotificationViewController*' index='0' name='controller' type='@'/>
+<arg declared_type='BOOL' index='1' name='status' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+</informal_protocol>
+<informal_protocol name='MPSurveyNavigationControllerDelegate'>
+<method selector='surveyController:wasDismissedWithAnswers:' type='v16@0:4@8@12' type64='v32@0:8@16@24'>
+<arg declared_type='MPSurveyNavigationController*' index='0' name='controller' type='@'/>
+<arg declared_type='NSArray*' index='1' name='answers' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</informal_protocol>
+<informal_protocol name='MPSurveyQuestionViewControllerDelegate'>
+<method selector='questionController:didReceiveAnswerProperties:' type='v16@0:4@8@12' type64='v32@0:8@16@24'>
+<arg declared_type='MPSurveyQuestionViewController*' index='0' name='controller' type='@'/>
+<arg declared_type='NSDictionary*' index='1' name='properties' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+</informal_protocol>
+<informal_protocol name='MixpanelDelegate'>
+<method selector='mixpanelWillFlush:' type='B12@0:4@8' type64='B24@0:8@16'>
+<arg declared_type='Mixpanel*' index='0' name='mixpanel' type='@'/>
+<retval declared_type='BOOL' type='B'/>
+</method>
+</informal_protocol>
+</signatures>
